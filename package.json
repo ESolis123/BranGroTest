@@ -1,0 +1,15 @@
+{
+  "name": "bangbro_test",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "enrique solis",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "express": "^4.21.2"
+  }
+}
