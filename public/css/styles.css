@@ -1,20 +1,20 @@
 body{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(207, 206, 192);
+    background-color: rgb(132, 132, 155);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .review-div{
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     justify-content: center;
-    width: 500px;
+    width: 1000px;
     height: 200px;
     align-items: center;
     margin: 20px;
     box-shadow: 5px 10px 2px rgba(0,0,0,0.5);
 }
 
-#reviews{
+#carousel{
     display: flex;
     margin-top: 100px;
 }

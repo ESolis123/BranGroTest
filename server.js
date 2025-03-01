@@ -7,6 +7,7 @@ const axios = require('axios');
 
 app.use('/', router);
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/node_modules"));
 
 router.get('/', (req, res) =>{
   res.sendFile(path.join(__dirname+'\\public\\index.html'));
@@ -21,6 +22,8 @@ router.get('/publicaciones', async (req, res) =>{
   });
 
   try{
+    const accountId = "";
+    const locationId = "";
     const reviews =
     axios.get(`https://mybusiness.googleapis.com/v4/accounts/${accountId}/locations/${locationId}/reviews/`)
 

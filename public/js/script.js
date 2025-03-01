@@ -11,26 +11,212 @@ const testReviews = [
     },
 
     {
-        "reviewer": {
-          "displayName": "Review 1",
-          "profilePhotoUrl": ""
-        },
-        "comment": "Great service!",
-        "rating": 5,
-        "createTime": "2023-03-01T12:34:56Z"
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
       },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+    {
+      "reviewer": {
+        "displayName": "Review 1",
+        "profilePhotoUrl": ""
+      },
+      "comment": "Great service!",
+      "rating": 5,
+      "createTime": "2023-03-01T12:34:56Z"
+    },
+
 ];
 
 document.addEventListener("DOMContentLoaded", ()=>{
     displayReviews();
-    console.log("Get reviews");
+
+    new Swiper('.swiper-wrapper', {
+      // Optional parameters
+      loop: true,
+      direction: "horizontal",
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+
+
+    });
+
 })
 
 
 
 async function displayReviews () {
     let reviews = [];
-
+  console.log("display reviews");
     await fetch("/publicaciones")
     .then(response=> {
         if(response.json?.data?.reviews){
@@ -51,6 +237,7 @@ async function displayReviews () {
     actualReviews.slice(0,8).forEach(review=>{
         const div = document.createElement("div");
         div.classList.add("review-div");
+        div.classList.add("swiper-slider");
 
         const user = document.createElement("p");
         user.innerText = review.reviewer.displayName;
@@ -68,3 +255,4 @@ async function displayReviews () {
         reviewsSection.appendChild(div);
     });
 }
+
