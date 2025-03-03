@@ -210,7 +210,8 @@ async function displayReviews () {
                         <div class="card-content">
                             <h2 class="name">${review.reviewer.displayName}</h2>
                             <p class="description">${review.comment}</p>
-                            <button class="button">View more</button>
+                            <p>${formatDate(review.createTime)}</p>
+                            <p>${review.rating} Stars</>
                         </div>
                     `
 
@@ -224,7 +225,7 @@ async function displayReviews () {
 
 
         card.innerHTML=html;
-
+        //getStars(review.rating, card);
         reviewsSection.appendChild(card);
         counter = counter + 1;
     });
@@ -322,4 +323,19 @@ function checkButtons(){
   }
 }
 
+const formatDate = (date) => {
+  const ending = date.indexOf("T");
+  return date.slice(0, ending)
+}
 
+function getStars(rating, card){
+  const starsDiv = card.getElementsByClassName("stars");
+
+  const html = `<img src="/assets/star-black.png">`
+
+  const star = document.createElement("span");
+  star.innerHTML = html;
+
+  console.log(starsDiv)
+  starsDiv.appendChild(star)
+}
