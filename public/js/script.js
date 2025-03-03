@@ -236,12 +236,40 @@ async function displayReviews () {
     reviewsSection.appendChild(lastButton);
 }
 
-const next = ()=> {
+const getAllCards =()=>{
   const reviewsSection = document.getElementById("reviews");
 
-  let children = Array.prototype.slice.call(reviewsSection.children);
-  children = children.filter(child => !child.classList.contains("card-hidden") && child.classList.contains("card"));
-  console.log(children)
+  return Array.prototype.slice.call(reviewsSection.children).filter(element => element.classList.contains("card"));
 }
+
+const getVisibleCards = () =>{
+  let children = getAllCards();
+  children = children.filter(child => !child.classList.contains("card-hidden") && child.classList.contains("card"));
+  return children;
+}
+
+const getId = (id) => {
+  return parseInt(id.replace("card", ""));
+}
+
+const next = ()=> {
+
+  let allCards = getAllCards();
+  let children = getVisibleCards();
+  const firstId = getId(children[0].id);
+  const lastId = getId(children.pop().id);
+
+  if(reviews.length > 2 && lastId < reviews.length-1){
+
+    children[0].classList.add("card-hidden");
+
+    for(let i = lastId; i < lastId + 2; i++){
+      allCards.find(card => card.id==`card${i}`).classList.remove("card-hidden");
+    }
+  }
+
+
+}
+
 
 
