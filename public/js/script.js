@@ -229,11 +229,17 @@ async function displayReviews () {
         counter = counter + 1;
     });
 
+    const firstButton = document.getElementById("previous-button");
+    firstButton.onclick=previous;
+
     const lastButton = document.createElement("button");
+    lastButton.id = "next-button";
     lastButton.classList.add("button-navigation");
     lastButton.innerHTML =`<img class="button-navigation-img right-button" src="assets/right-arrow.png">`;
     lastButton.onclick = next;
     reviewsSection.appendChild(lastButton);
+
+    checkButtons();
 }
 
 const getAllCards =()=>{
@@ -268,8 +274,52 @@ const next = ()=> {
     }
   }
 
-
+  checkButtons();
 }
 
+const previous = ()=> {
+
+  let allCards = getAllCards();
+  let children = getVisibleCards();
+  const firstVisibleCardId = getId(children[0].id);
+  const lastVisibleCardId = getId(children.pop().id);
+
+  if(reviews.length > 2 && firstVisibleCardId > 0){
+      showCard(lastVisibleCardId, false, allCards);
+      showCard(firstVisibleCardId-1, true, allCards);
+  }
+
+  checkButtons();
+}
+
+
+function showCard(id, show, allCards){
+  if(show){
+    allCards.find(card=> card.id == `card${id}`).classList.remove("card-hidden")
+  }
+
+  else{
+    allCards.find(card=> card.id == `card${id}`).classList.add("card-hidden")
+  }
+}
+
+
+function checkButtons(){
+  const previousButton = document.getElementById("previous-button");
+  const nextButton = document.getElementById("next-button");
+
+  if(getVisibleCards()[0].id == "card0"){
+    previousButton.classList.add("card-hidden");
+  }
+
+  else if(getId(getVisibleCards().pop().id) == getAllCards().length-1){
+    nextButton.classList.add("card-hidden");
+  }
+
+  else{
+    previousButton.classList.remove("card-hidden");
+    nextButton.classList.remove("card-hidden");
+  }
+}
 
 
