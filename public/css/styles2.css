@@ -10,7 +10,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #646060;
+    background-color: #3d3e41;
 }
 
 .card{
@@ -154,4 +154,8 @@ body{
 
 .right-button{
     transform: rotate(0);
+}
+
+.card-hidden{
+    display: none;
 }
